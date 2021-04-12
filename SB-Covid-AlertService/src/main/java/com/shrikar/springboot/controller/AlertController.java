@@ -1,6 +1,8 @@
 package com.shrikar.springboot.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shrikar.springboot.dto.AlertStatus;
 import com.shrikar.springboot.dto.SummaryData;
 import com.shrikar.springboot.service.AlertService;
+import com.shrikar.springboot.service.StateData2;
 
 
 @RestController
@@ -31,5 +34,10 @@ public class AlertController {
         return alertService.getOverAllSummary();
     }
     
+    @GetMapping("/contacts")
+    public List<StateData2> getContacts(){
+
+        return alertService.getContactsData();
+    }
     
 }

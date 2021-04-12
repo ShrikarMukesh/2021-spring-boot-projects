@@ -9,6 +9,7 @@ import com.shrikar.springboot.dto.StateData;
 import com.shrikar.springboot.dto.SummaryData;
 
 import java.util.Arrays;
+import java.util.List;
 
 
 
@@ -46,4 +47,9 @@ public class AlertService {
 
         return covid19DataProvider.getSummaryData();
     }
+    public List<StateData2> getContactsData() {
+
+        return covid19DataProvider.getConatctData();
+    }
+    
 }

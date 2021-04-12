@@ -10,15 +10,20 @@ import com.shrikar.springboot.dto.StateData;
 import com.shrikar.springboot.dto.SummaryData;
 
 import java.util.Arrays;
-
+import java.util.List;
 
 @Service
 public class Covid19DataProvider {
 
 	static final String URL = "https://api.rootnet.in/covid19-in/stats/latest";
+	
+	static final String URL2 = "https://api.rootnet.in/covid19-in/contacts";
 
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	RestTemplate restTemplate2;
 
 	public StateData getStateData(String state) {
 
@@ -33,6 +38,20 @@ public class Covid19DataProvider {
 					.orElse(new StateData());
 		}
 
+
+	}
+	public List<StateData2> getConatctData() {
+
+		CovidApiData2 covidApiData2 = restTemplate2.getForObject(URL2, CovidApiData2.class);
+		
+		if(covidApiData2 == null) {
+            return null;
+		}
+		else {
+			List<StateData2> contacts =  Arrays.asList(covidApiData2.getData().getContacts().getRegional());
+			return contacts;
+					
+		}
 
 	}
 
